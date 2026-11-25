@@ -1,0 +1,1396 @@
+<!doctype html><!-- Copyright 2026 Marco Baroni and the Royaume ONE contributors. SPDX-License-Identifier: Apache-2.0 -->
+<html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Royaume · Test OmniRoute</title><meta name="description" content="Résultats vérifiés d’un essai OmniRoute avec deux sous-agents, outils réels et fournisseurs gratuits."><meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="./style.css"><main><header><div class="eyebrow">Royaume · preuve d’exécution</div><h1>OmniRoute et deux sous-agents</h1><p class="lead">Un essai réel, sur données synthétiques : lecture de fichier, calcul, écriture de résultats, contrôle indépendant et bascule de fournisseur.</p><span class="badge">Recette vérifiée</span><p class="muted">25/11/2026 · 14:21 Europe/Paris · OmniRoute 3.8.54</p></header><section class="cards"><div class="card"><strong>2</strong><span>sous-agents exécutants</span></div><div class="card"><strong>5</strong><span>appels de modèles</span></div><div class="card"><strong>2 670</strong><span>tokens déclarés</span></div><div class="card"><strong>Aucun</strong><span>achat de crédit API</span></div></section><h2>Ce qui a été produit</h2><p>Le premier agent établit les indicateurs de six missions fictives. Le second identifie les missions bloquées, actives et prêtes. Chaque agent reçoit son propre contexte, demande la lecture des données et soumet un résultat écrit dans un fichier. Le superviseur est un programme déterministe ; il ne s’agit pas d’une délégation décidée librement par un modèle.</p><table><tr><th>Indicateur</th><th>Résultat vérifié</th></tr><tr><td>Missions</td><td>6</td></tr><tr><td>Terminées</td><td>2</td></tr><tr><td>En cours</td><td>1</td></tr><tr><td>Bloquées</td><td>1</td></tr><tr><td>Prêtes</td><td>2</td></tr><tr><td>Effort restant, en points</td><td>13</td></tr><tr><td>Mission bloquée</td><td>T3</td></tr><tr><td>Mission active</td><td>T2</td></tr></table><h2>Contrôles d’acceptation</h2><table><tr><td>Indicateurs recalculés indépendamment</td><td class="pass">Vérifié</td></tr><tr><td>Audit recalculé indépendamment</td><td class="pass">Vérifié</td></tr><tr><td>Lecture et écriture d’outils pour chaque agent</td><td class="pass">Vérifié</td></tr><tr><td>Réponses de modèles réelles et cache évité</td><td class="pass">Vérifié</td></tr><tr><td>Point de reprise intact</td><td class="pass">Vérifié</td></tr><tr><td>Deux processus d’agents distincts</td><td class="pass">Vérifié</td></tr><tr><td>Secours après panne locale simulée</td><td class="pass">Vérifié</td></tr><tr><td>Instance temporaire arrêtée</td><td class="pass">Vérifié</td></tr><tr><td>Critères du superviseur</td><td class="pass">Vérifié</td></tr></table><h2>Fournisseurs et coût observé</h2><p>Deux points d’accès publics sans clé fournisseur ont été raccordés à OmniRoute par sa configuration OpenAI compatible : Kilo, route <code>kilo-auto/free</code>, et Pollinations, route <code>openai-fast</code>. Aucun compte externe, abonnement ou crédit payant n’a été créé. Le routeur déclare un coût de 0 pour les appels conservés ; ce chiffre est sa déclaration, sans facture fournisseur indépendante. Le modèle derrière Kilo Auto peut changer et n’est pas attesté par le nom de route.</p><h2>Incidents et limites constatés</h2><ul><li>Pollinations a renvoyé une limite de gratuité : une réponse toutes les 45 secondes par adresse IP. Un premier parcours a été interrompu ; les points de reprise et l’erreur sont conservés dans le dossier de preuves.</li><li>La politique de secours du routeur a effectivement changé de fournisseur pendant 1 appel(s) de la recette finale. Une panne HTTP 503 locale a aussi été simulée séparément, puis le fournisseur gratuit sain a répondu.</li><li>1 soumission(s) incorrecte(s) ont été refusée(s) par le vérificateur durant cette dernière recette. L’essai précédent contient également une erreur de classement corrigée après refus.</li><li>Le point de reprise est conservé entre deux processus d’agents ; cela ne prouve pas une reprise après coupure en plein appel réseau ou l’exploitation 24 h/24.</li><li>La version publiée sur npm était 3.8.54 pendant l’essai, alors que la documentation consultée décrivait 3.8.55. Les raccourcis intégrés testés demandaient des clés ; les points d’accès anonymes ont nécessité une configuration personnalisée.</li></ul><p class="note"><strong>Contrôle des appels annexes.</strong> Un premier lancement a été arrêté par la révision automatique à cause d’un appel externe de diagnostic d’adresse IP. Pour la recette suivante, les services de synchronisation ont été désactivés et le réglage officiel du diagnostic IP a été dirigé vers un point local répondant « indisponible ». Aucune fausse adresse IP n’a été fournie. Les services temporaires de l’essai sont arrêtés.</p><h2>Portée pour le Royaume</h2><p>La faisabilité de sous-agents exécutants utilisant des accès gratuits via OmniRoute est établie sur cette mission minuscule. L’intégration au téléchargement du Royaume, l’interface mobile de lancement, l’hébergement durable, les permissions métier et la fiabilité sur de longs travaux restent à construire et à éprouver. Le test a été lancé depuis la conversation ; aucune interface mobile du produit n’a été déployée.</p><details><summary>Journal daté de l’essai final</summary><ol class="timeline"><li><time>14:20:51</time> pilot_started</li><li><time>14:21:02</time> gateway_ready</li><li><time>14:21:08</time> public_route_configured</li><li><time>14:21:11</time> public_route_configured</li><li><time>14:21:12</time> agent_started — metrics</li><li><time>14:21:14</time> model_response — metrics</li><li><time>14:21:14</time> tool_executed — metrics · read_fixture</li><li><time>14:21:18</time> model_response — metrics</li><li><time>14:21:18</time> tool_executed — metrics · submit_result</li><li><time>14:21:18</time> agent_completed — metrics</li><li><time>14:21:18</time> execution_stopped_at_checkpoint</li><li><time>14:21:18</time> agent_started — audit</li><li><time>14:21:18</time> model_response — audit</li><li><time>14:21:18</time> tool_executed — audit · read_fixture</li><li><time>14:21:24</time> model_response — audit</li><li><time>14:21:24</time> submission_rejected — audit</li><li><time>14:21:26</time> model_response — audit</li><li><time>14:21:26</time> tool_executed — audit · submit_result</li><li><time>14:21:26</time> agent_completed — audit</li><li><time>14:21:26</time> execution_resumed</li><li><time>14:21:26</time> public_route_configured</li><li><time>14:21:28</time> gateway_stopped</li></ol></details><details><summary>Preuves JSON, réponses et empreintes</summary><pre>{
+  &quot;audit-call-1.json&quot;: {
+    &quot;at&quot;: &quot;2026-11-25T13:21:18.770712+00:00&quot;,
+    &quot;agent&quot;: &quot;audit&quot;,
+    &quot;request&quot;: {
+      &quot;model&quot;: &quot;pilot-agent-fallback&quot;,
+      &quot;messages&quot;: [
+        {
+          &quot;role&quot;: &quot;system&quot;,
+          &quot;content&quot;: &quot;You are a bounded specialist sub-agent in a synthetic acceptance experiment. First call read_fixture. Use its actual returned data and challenge. Then call submit_result with exactly the schema fields. Never invent missing data. Metrics: count tasks by status and sum effort only for tasks whose status is not DONE. Audit: list sorted IDs by BLOCKED, RUNNING, READY status. No prose, no extra tools.&quot;
+        },
+        {
+          &quot;role&quot;: &quot;user&quot;,
+          &quot;content&quot;: &quot;Perform your audit mission. Read the fixture and submit the result.&quot;
+        }
+      ],
+      &quot;tools&quot;: [
+        {
+          &quot;type&quot;: &quot;function&quot;,
+          &quot;function&quot;: {
+            &quot;name&quot;: &quot;read_fixture&quot;,
+            &quot;description&quot;: &quot;Read the local synthetic task fixture.&quot;,
+            &quot;parameters&quot;: {
+              &quot;type&quot;: &quot;object&quot;,
+              &quot;properties&quot;: {},
+              &quot;additionalProperties&quot;: false
+            }
+          }
+        },
+        {
+          &quot;type&quot;: &quot;function&quot;,
+          &quot;function&quot;: {
+            &quot;name&quot;: &quot;submit_result&quot;,
+            &quot;description&quot;: &quot;Validate and write the final specialist result as a real local JSON artifact.&quot;,
+            &quot;parameters&quot;: {
+              &quot;type&quot;: &quot;object&quot;,
+              &quot;properties&quot;: {
+                &quot;challenge&quot;: {
+                  &quot;type&quot;: &quot;string&quot;
+                },
+                &quot;blocked_task_ids&quot;: {
+                  &quot;type&quot;: &quot;array&quot;,
+                  &quot;items&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                  }
+                },
+                &quot;active_task_ids&quot;: {
+                  &quot;type&quot;: &quot;array&quot;,
+                  &quot;items&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                  }
+                },
+                &quot;ready_task_ids&quot;: {
+                  &quot;type&quot;: &quot;array&quot;,
+                  &quot;items&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                  }
+                }
+              },
+              &quot;required&quot;: [
+                &quot;challenge&quot;,
+                &quot;blocked_task_ids&quot;,
+                &quot;active_task_ids&quot;,
+                &quot;ready_task_ids&quot;
+              ],
+              &quot;additionalProperties&quot;: false
+            }
+          }
+        }
+      ],
+      &quot;tool_choice&quot;: &quot;auto&quot;,
+      &quot;max_tokens&quot;: 1536,
+      &quot;stream&quot;: false
+    },
+    &quot;http_status&quot;: 200,
+    &quot;response_id&quot;: &quot;pllns_ee59744e62fca0ab51dfa3e00a105a33&quot;,
+    &quot;returned_model&quot;: &quot;openai-fast&quot;,
+    &quot;usage&quot;: {
+      &quot;prompt_tokens&quot;: 260,
+      &quot;completion_tokens&quot;: 89,
+      &quot;total_tokens&quot;: 349,
+      &quot;prompt_tokens_details&quot;: {
+        &quot;cached_tokens&quot;: 80
+      },
+      &quot;completion_tokens_details&quot;: {
+        &quot;reasoning_tokens&quot;: 0
+      },
+      &quot;usage_evidence&quot;: {
+        &quot;input&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        },
+        &quot;output&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        },
+        &quot;cacheRead&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        },
+        &quot;cacheCreation&quot;: {
+          &quot;source&quot;: &quot;unknown&quot;
+        }
+      }
+    },
+    &quot;message&quot;: {
+      &quot;role&quot;: &quot;assistant&quot;,
+      &quot;content&quot;: &quot;&quot;,
+      &quot;tool_calls&quot;: [
+        {
+          &quot;id&quot;: &quot;chatcmpl-tool-afeead76cfe61084&quot;,
+          &quot;type&quot;: &quot;function&quot;,
+          &quot;function&quot;: {
+            &quot;name&quot;: &quot;read_fixture&quot;,
+            &quot;arguments&quot;: &quot;{}&quot;
+          }
+        }
+      ]
+    },
+    &quot;routing_headers&quot;: {
+      &quot;x-omniroute-route-class&quot;: &quot;CLIENT_API&quot;,
+      &quot;x-omniroute-cache&quot;: &quot;MISS&quot;,
+      &quot;x-omniroute-cache-hit&quot;: &quot;false&quot;,
+      &quot;x-omniroute-combo-trace&quot;: &quot;combo-b57a8422-8f2b-43cb-a6f8-7c3837a35f98&quot;,
+      &quot;x-omniroute-compression&quot;: &quot;off; source=off&quot;,
+      &quot;x-omniroute-decision&quot;: &quot;strategy=priority; provider=openai-compatible-chat-0c6ef826-0b9f-4c1a-88c2-7289bf60b359; latency_ms=302&quot;,
+      &quot;x-omniroute-latency-ms&quot;: &quot;302&quot;,
+      &quot;x-omniroute-model&quot;: &quot;openai-fast&quot;,
+      &quot;x-omniroute-provider&quot;: &quot;openai-compatible-chat-0c6ef826-0b9f-4c1a-88c2-7289bf60b359&quot;,
+      &quot;x-omniroute-request-id&quot;: &quot;56e92462-58a9-4ed3-8c1d-14dc3f390720&quot;,
+      &quot;x-omniroute-response-cost&quot;: &quot;0.0000000000&quot;,
+      &quot;x-omniroute-selected-connection-id&quot;: &quot;54e010d8-7490-456a-a7d6-897f0eede0cc&quot;,
+      &quot;x-omniroute-session-id&quot;: &quot;05d7c136f0a1534f&quot;,
+      &quot;x-omniroute-tokens-in&quot;: &quot;260&quot;,
+      &quot;x-omniroute-tokens-out&quot;: &quot;89&quot;,
+      &quot;x-omniroute-version&quot;: &quot;3.8.54&quot;
+    },
+    &quot;elapsed_s&quot;: 0.379
+  },
+  &quot;audit-call-2.json&quot;: {
+    &quot;at&quot;: &quot;2026-11-25T13:21:24.395843+00:00&quot;,
+    &quot;agent&quot;: &quot;audit&quot;,
+    &quot;request&quot;: {
+      &quot;model&quot;: &quot;pilot-agent-fallback&quot;,
+      &quot;messages&quot;: [
+        {
+          &quot;role&quot;: &quot;system&quot;,
+          &quot;content&quot;: &quot;You are a bounded specialist sub-agent in a synthetic acceptance experiment. First call read_fixture. Use its actual returned data and challenge. Then call submit_result with exactly the schema fields. Never invent missing data. Metrics: count tasks by status and sum effort only for tasks whose status is not DONE. Audit: list sorted IDs by BLOCKED, RUNNING, READY status. No prose, no extra tools.&quot;
+        },
+        {
+          &quot;role&quot;: &quot;user&quot;,
+          &quot;content&quot;: &quot;Perform your audit mission. Read the fixture and submit the result.&quot;
+        },
+        {
+          &quot;role&quot;: &quot;assistant&quot;,
+          &quot;content&quot;: &quot;&quot;,
+          &quot;tool_calls&quot;: [
+            {
+              &quot;id&quot;: &quot;chatcmpl-tool-afeead76cfe61084&quot;,
+              &quot;type&quot;: &quot;function&quot;,
+              &quot;function&quot;: {
+                &quot;name&quot;: &quot;read_fixture&quot;,
+                &quot;arguments&quot;: &quot;{}&quot;
+              }
+            }
+          ]
+        },
+        {
+          &quot;role&quot;: &quot;tool&quot;,
+          &quot;tool_call_id&quot;: &quot;chatcmpl-tool-afeead76cfe61084&quot;,
+          &quot;content&quot;: &quot;{\&quot;synthetic\&quot;: true, \&quot;challenge\&quot;: \&quot;c10d70e3e26a969adf051918\&quot;, \&quot;tasks\&quot;: [{\&quot;id\&quot;: \&quot;T1\&quot;, \&quot;status\&quot;: \&quot;DONE\&quot;, \&quot;effort\&quot;: 3}, {\&quot;id\&quot;: \&quot;T2\&quot;, \&quot;status\&quot;: \&quot;RUNNING\&quot;, \&quot;effort\&quot;: 5}, {\&quot;id\&quot;: \&quot;T3\&quot;, \&quot;status\&quot;: \&quot;BLOCKED\&quot;, \&quot;effort\&quot;: 2}, {\&quot;id\&quot;: \&quot;T4\&quot;, \&quot;status\&quot;: \&quot;READY\&quot;, \&quot;effort\&quot;: 4}, {\&quot;id\&quot;: \&quot;T5\&quot;, \&quot;status\&quot;: \&quot;DONE\&quot;, \&quot;effort\&quot;: 1}, {\&quot;id\&quot;: \&quot;T6\&quot;, \&quot;status\&quot;: \&quot;READY\&quot;, \&quot;effort\&quot;: 2}]}&quot;
+        }
+      ],
+      &quot;tools&quot;: [
+        {
+          &quot;type&quot;: &quot;function&quot;,
+          &quot;function&quot;: {
+            &quot;name&quot;: &quot;read_fixture&quot;,
+            &quot;description&quot;: &quot;Read the local synthetic task fixture.&quot;,
+            &quot;parameters&quot;: {
+              &quot;type&quot;: &quot;object&quot;,
+              &quot;properties&quot;: {},
+              &quot;additionalProperties&quot;: false
+            }
+          }
+        },
+        {
+          &quot;type&quot;: &quot;function&quot;,
+          &quot;function&quot;: {
+            &quot;name&quot;: &quot;submit_result&quot;,
+            &quot;description&quot;: &quot;Validate and write the final specialist result as a real local JSON artifact.&quot;,
+            &quot;parameters&quot;: {
+              &quot;type&quot;: &quot;object&quot;,
+              &quot;properties&quot;: {
+                &quot;challenge&quot;: {
+                  &quot;type&quot;: &quot;string&quot;
+                },
+                &quot;blocked_task_ids&quot;: {
+                  &quot;type&quot;: &quot;array&quot;,
+                  &quot;items&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                  }
+                },
+                &quot;active_task_ids&quot;: {
+                  &quot;type&quot;: &quot;array&quot;,
+                  &quot;items&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                  }
+                },
+                &quot;ready_task_ids&quot;: {
+                  &quot;type&quot;: &quot;array&quot;,
+                  &quot;items&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                  }
+                }
+              },
+              &quot;required&quot;: [
+                &quot;challenge&quot;,
+                &quot;blocked_task_ids&quot;,
+                &quot;active_task_ids&quot;,
+                &quot;ready_task_ids&quot;
+              ],
+              &quot;additionalProperties&quot;: false
+            }
+          }
+        }
+      ],
+      &quot;tool_choice&quot;: &quot;auto&quot;,
+      &quot;max_tokens&quot;: 1536,
+      &quot;stream&quot;: false
+    },
+    &quot;http_status&quot;: 200,
+    &quot;response_id&quot;: &quot;pllns_ba61dbcf59a0a9e716575f7b4a115ac6&quot;,
+    &quot;returned_model&quot;: &quot;openai-fast&quot;,
+    &quot;usage&quot;: {
+      &quot;prompt_tokens&quot;: 437,
+      &quot;completion_tokens&quot;: 96,
+      &quot;total_tokens&quot;: 533,
+      &quot;prompt_tokens_details&quot;: {
+        &quot;cached_tokens&quot;: 80
+      },
+      &quot;completion_tokens_details&quot;: {
+        &quot;reasoning_tokens&quot;: 0
+      },
+      &quot;usage_evidence&quot;: {
+        &quot;input&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        },
+        &quot;output&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        },
+        &quot;cacheRead&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        },
+        &quot;cacheCreation&quot;: {
+          &quot;source&quot;: &quot;unknown&quot;
+        }
+      }
+    },
+    &quot;message&quot;: {
+      &quot;role&quot;: &quot;assistant&quot;,
+      &quot;content&quot;: &quot;&quot;,
+      &quot;tool_calls&quot;: [
+        {
+          &quot;id&quot;: &quot;chatcmpl-tool-8ad91b102583f99a&quot;,
+          &quot;type&quot;: &quot;function&quot;,
+          &quot;function&quot;: {
+            &quot;name&quot;: &quot;submit_result&quot;,
+            &quot;arguments&quot;: &quot;{\&quot;active_task_ids\&quot;:[],\&quot;blocked_task_ids\&quot;:[\&quot;T3\&quot;],\&quot;challenge\&quot;:\&quot;c10d70e3e26a969adf051918\&quot;,\&quot;ready_task_ids\&quot;:[\&quot;T4\&quot;,\&quot;T6\&quot;]}&quot;
+          }
+        }
+      ]
+    },
+    &quot;routing_headers&quot;: {
+      &quot;x-omniroute-route-class&quot;: &quot;CLIENT_API&quot;,
+      &quot;x-omniroute-cache&quot;: &quot;MISS&quot;,
+      &quot;x-omniroute-cache-hit&quot;: &quot;false&quot;,
+      &quot;x-omniroute-combo-trace&quot;: &quot;combo-f8b61aad-74f6-420e-8338-c6a03a986368&quot;,
+      &quot;x-omniroute-compression&quot;: &quot;off; source=off&quot;,
+      &quot;x-omniroute-decision&quot;: &quot;strategy=priority; provider=openai-compatible-chat-0c6ef826-0b9f-4c1a-88c2-7289bf60b359; latency_ms=5570&quot;,
+      &quot;x-omniroute-latency-ms&quot;: &quot;5570&quot;,
+      &quot;x-omniroute-model&quot;: &quot;openai-fast&quot;,
+      &quot;x-omniroute-provider&quot;: &quot;openai-compatible-chat-0c6ef826-0b9f-4c1a-88c2-7289bf60b359&quot;,
+      &quot;x-omniroute-request-id&quot;: &quot;47e86721-b13f-4d1a-b700-507577734c0e&quot;,
+      &quot;x-omniroute-response-cost&quot;: &quot;0.0000000000&quot;,
+      &quot;x-omniroute-selected-connection-id&quot;: &quot;54e010d8-7490-456a-a7d6-897f0eede0cc&quot;,
+      &quot;x-omniroute-session-id&quot;: &quot;05d7c136f0a1534f&quot;,
+      &quot;x-omniroute-tokens-in&quot;: &quot;437&quot;,
+      &quot;x-omniroute-tokens-out&quot;: &quot;96&quot;,
+      &quot;x-omniroute-version&quot;: &quot;3.8.54&quot;
+    },
+    &quot;elapsed_s&quot;: 5.624
+  },
+  &quot;audit-call-3.json&quot;: {
+    &quot;at&quot;: &quot;2026-11-25T13:21:26.752410+00:00&quot;,
+    &quot;agent&quot;: &quot;audit&quot;,
+    &quot;request&quot;: {
+      &quot;model&quot;: &quot;pilot-agent-fallback&quot;,
+      &quot;messages&quot;: [
+        {
+          &quot;role&quot;: &quot;system&quot;,
+          &quot;content&quot;: &quot;You are a bounded specialist sub-agent in a synthetic acceptance experiment. First call read_fixture. Use its actual returned data and challenge. Then call submit_result with exactly the schema fields. Never invent missing data. Metrics: count tasks by status and sum effort only for tasks whose status is not DONE. Audit: list sorted IDs by BLOCKED, RUNNING, READY status. No prose, no extra tools.&quot;
+        },
+        {
+          &quot;role&quot;: &quot;user&quot;,
+          &quot;content&quot;: &quot;Perform your audit mission. Read the fixture and submit the result.&quot;
+        },
+        {
+          &quot;role&quot;: &quot;assistant&quot;,
+          &quot;content&quot;: &quot;&quot;,
+          &quot;tool_calls&quot;: [
+            {
+              &quot;id&quot;: &quot;chatcmpl-tool-afeead76cfe61084&quot;,
+              &quot;type&quot;: &quot;function&quot;,
+              &quot;function&quot;: {
+                &quot;name&quot;: &quot;read_fixture&quot;,
+                &quot;arguments&quot;: &quot;{}&quot;
+              }
+            }
+          ]
+        },
+        {
+          &quot;role&quot;: &quot;tool&quot;,
+          &quot;tool_call_id&quot;: &quot;chatcmpl-tool-afeead76cfe61084&quot;,
+          &quot;content&quot;: &quot;{\&quot;synthetic\&quot;: true, \&quot;challenge\&quot;: \&quot;c10d70e3e26a969adf051918\&quot;, \&quot;tasks\&quot;: [{\&quot;id\&quot;: \&quot;T1\&quot;, \&quot;status\&quot;: \&quot;DONE\&quot;, \&quot;effort\&quot;: 3}, {\&quot;id\&quot;: \&quot;T2\&quot;, \&quot;status\&quot;: \&quot;RUNNING\&quot;, \&quot;effort\&quot;: 5}, {\&quot;id\&quot;: \&quot;T3\&quot;, \&quot;status\&quot;: \&quot;BLOCKED\&quot;, \&quot;effort\&quot;: 2}, {\&quot;id\&quot;: \&quot;T4\&quot;, \&quot;status\&quot;: \&quot;READY\&quot;, \&quot;effort\&quot;: 4}, {\&quot;id\&quot;: \&quot;T5\&quot;, \&quot;status\&quot;: \&quot;DONE\&quot;, \&quot;effort\&quot;: 1}, {\&quot;id\&quot;: \&quot;T6\&quot;, \&quot;status\&quot;: \&quot;READY\&quot;, \&quot;effort\&quot;: 2}]}&quot;
+        },
+        {
+          &quot;role&quot;: &quot;assistant&quot;,
+          &quot;content&quot;: &quot;&quot;,
+          &quot;tool_calls&quot;: [
+            {
+              &quot;id&quot;: &quot;chatcmpl-tool-8ad91b102583f99a&quot;,
+              &quot;type&quot;: &quot;function&quot;,
+              &quot;function&quot;: {
+                &quot;name&quot;: &quot;submit_result&quot;,
+                &quot;arguments&quot;: &quot;{\&quot;active_task_ids\&quot;:[],\&quot;blocked_task_ids\&quot;:[\&quot;T3\&quot;],\&quot;challenge\&quot;:\&quot;c10d70e3e26a969adf051918\&quot;,\&quot;ready_task_ids\&quot;:[\&quot;T4\&quot;,\&quot;T6\&quot;]}&quot;
+              }
+            }
+          ]
+        },
+        {
+          &quot;role&quot;: &quot;tool&quot;,
+          &quot;tool_call_id&quot;: &quot;chatcmpl-tool-8ad91b102583f99a&quot;,
+          &quot;content&quot;: &quot;{\&quot;accepted\&quot;: false, \&quot;error\&quot;: \&quot;Result does not match the independent verification.\&quot;, \&quot;received\&quot;: {\&quot;active_task_ids\&quot;: [], \&quot;blocked_task_ids\&quot;: [\&quot;T3\&quot;], \&quot;challenge\&quot;: \&quot;c10d70e3e26a969adf051918\&quot;, \&quot;ready_task_ids\&quot;: [\&quot;T4\&quot;, \&quot;T6\&quot;]}}&quot;
+        }
+      ],
+      &quot;tools&quot;: [
+        {
+          &quot;type&quot;: &quot;function&quot;,
+          &quot;function&quot;: {
+            &quot;name&quot;: &quot;read_fixture&quot;,
+            &quot;description&quot;: &quot;Read the local synthetic task fixture.&quot;,
+            &quot;parameters&quot;: {
+              &quot;type&quot;: &quot;object&quot;,
+              &quot;properties&quot;: {},
+              &quot;additionalProperties&quot;: false
+            }
+          }
+        },
+        {
+          &quot;type&quot;: &quot;function&quot;,
+          &quot;function&quot;: {
+            &quot;name&quot;: &quot;submit_result&quot;,
+            &quot;description&quot;: &quot;Validate and write the final specialist result as a real local JSON artifact.&quot;,
+            &quot;parameters&quot;: {
+              &quot;type&quot;: &quot;object&quot;,
+              &quot;properties&quot;: {
+                &quot;challenge&quot;: {
+                  &quot;type&quot;: &quot;string&quot;
+                },
+                &quot;blocked_task_ids&quot;: {
+                  &quot;type&quot;: &quot;array&quot;,
+                  &quot;items&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                  }
+                },
+                &quot;active_task_ids&quot;: {
+                  &quot;type&quot;: &quot;array&quot;,
+                  &quot;items&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                  }
+                },
+                &quot;ready_task_ids&quot;: {
+                  &quot;type&quot;: &quot;array&quot;,
+                  &quot;items&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                  }
+                }
+              },
+              &quot;required&quot;: [
+                &quot;challenge&quot;,
+                &quot;blocked_task_ids&quot;,
+                &quot;active_task_ids&quot;,
+                &quot;ready_task_ids&quot;
+              ],
+              &quot;additionalProperties&quot;: false
+            }
+          }
+        }
+      ],
+      &quot;tool_choice&quot;: &quot;auto&quot;,
+      &quot;max_tokens&quot;: 1536,
+      &quot;stream&quot;: false
+    },
+    &quot;http_status&quot;: 200,
+    &quot;response_id&quot;: &quot;gen_01M89DWG0D4M6R9Y2X553H8HQ8&quot;,
+    &quot;returned_model&quot;: &quot;kilo-auto/free&quot;,
+    &quot;usage&quot;: {
+      &quot;prompt_tokens&quot;: 525,
+      &quot;completion_tokens&quot;: 197,
+      &quot;total_tokens&quot;: 722,
+      &quot;prompt_tokens_details&quot;: {
+        &quot;cached_tokens&quot;: 192,
+        &quot;audio_tokens&quot;: 0,
+        &quot;video_tokens&quot;: 0
+      },
+      &quot;completion_tokens_details&quot;: {
+        &quot;reasoning_tokens&quot;: 126,
+        &quot;image_tokens&quot;: 0
+      },
+      &quot;cache_creation_input_tokens&quot;: 0,
+      &quot;cost&quot;: 0,
+      &quot;usage_evidence&quot;: {
+        &quot;input&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        },
+        &quot;output&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        },
+        &quot;cacheRead&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        },
+        &quot;cacheCreation&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        }
+      }
+    },
+    &quot;message&quot;: {
+      &quot;role&quot;: &quot;assistant&quot;,
+      &quot;content&quot;: null,
+      &quot;tool_calls&quot;: [
+        {
+          &quot;id&quot;: &quot;call-d5fc81d6-b578-478c-bed8-9296d31c6083&quot;,
+          &quot;type&quot;: &quot;function&quot;,
+          &quot;function&quot;: {
+            &quot;name&quot;: &quot;submit_result&quot;,
+            &quot;arguments&quot;: &quot;{\&quot;active_task_ids\&quot;: [\&quot;T2\&quot;], \&quot;blocked_task_ids\&quot;: [\&quot;T3\&quot;], \&quot;challenge\&quot;: \&quot;c10d70e3e26a969adf051918\&quot;, \&quot;ready_task_ids\&quot;: [\&quot;T4\&quot;, \&quot;T6\&quot;]}&quot;
+          }
+        }
+      ]
+    },
+    &quot;routing_headers&quot;: {
+      &quot;x-omniroute-route-class&quot;: &quot;CLIENT_API&quot;,
+      &quot;x-omniroute-cache&quot;: &quot;MISS&quot;,
+      &quot;x-omniroute-cache-hit&quot;: &quot;false&quot;,
+      &quot;x-omniroute-combo-trace&quot;: &quot;combo-50037925-e34e-4b8d-9c04-281ab6afc1b8&quot;,
+      &quot;x-omniroute-compression&quot;: &quot;off; source=off&quot;,
+      &quot;x-omniroute-decision&quot;: &quot;strategy=priority; provider=openai-compatible-chat-76dcfb3c-9c6c-4c24-bb2b-a122e147b075; latency_ms=1910&quot;,
+      &quot;x-omniroute-fallback-attempts&quot;: &quot;1&quot;,
+      &quot;x-omniroute-latency-ms&quot;: &quot;1910&quot;,
+      &quot;x-omniroute-model&quot;: &quot;kilo-auto/free&quot;,
+      &quot;x-omniroute-provider&quot;: &quot;openai-compatible-chat-76dcfb3c-9c6c-4c24-bb2b-a122e147b075&quot;,
+      &quot;x-omniroute-request-id&quot;: &quot;cb5aa5aa-b5c4-4868-90de-a2c4abeb02e3&quot;,
+      &quot;x-omniroute-response-cost&quot;: &quot;0.0000000000&quot;,
+      &quot;x-omniroute-selected-connection-id&quot;: &quot;01346b0f-c8a4-4d5b-aef9-80331b18ac26&quot;,
+      &quot;x-omniroute-session-id&quot;: &quot;05d7c136f0a1534f&quot;,
+      &quot;x-omniroute-tokens-in&quot;: &quot;525&quot;,
+      &quot;x-omniroute-tokens-out&quot;: &quot;197&quot;,
+      &quot;x-omniroute-version&quot;: &quot;3.8.54&quot;
+    },
+    &quot;elapsed_s&quot;: 2.355
+  },
+  &quot;audit-result.json&quot;: {
+    &quot;active_task_ids&quot;: [
+      &quot;T2&quot;
+    ],
+    &quot;blocked_task_ids&quot;: [
+      &quot;T3&quot;
+    ],
+    &quot;challenge&quot;: &quot;c10d70e3e26a969adf051918&quot;,
+    &quot;ready_task_ids&quot;: [
+      &quot;T4&quot;,
+      &quot;T6&quot;
+    ]
+  },
+  &quot;checkpoint.json&quot;: {
+    &quot;completed_agents&quot;: [
+      &quot;metrics&quot;
+    ],
+    &quot;remaining_agents&quot;: [
+      &quot;audit&quot;
+    ],
+    &quot;metrics_sha256&quot;: &quot;833c7b847ba56870174640fe640997554384fe451e02848b672169f6a9f0bda6&quot;,
+    &quot;at&quot;: &quot;2026-11-25T13:21:18.305277+00:00&quot;
+  },
+  &quot;fallback-result.json&quot;: {
+    &quot;at&quot;: &quot;2026-11-25T13:21:27.761868+00:00&quot;,
+    &quot;synthetic_outage_requests&quot;: 1,
+    &quot;status&quot;: 200,
+    &quot;data&quot;: {
+      &quot;id&quot;: &quot;gen_01M89DWJ42KYYKABZ5Q62479DA&quot;,
+      &quot;object&quot;: &quot;chat.completion&quot;,
+      &quot;created&quot;: 1795612887,
+      &quot;model&quot;: &quot;kilo-auto/free&quot;,
+      &quot;choices&quot;: [
+        {
+          &quot;index&quot;: 0,
+          &quot;finish_reason&quot;: &quot;stop&quot;,
+          &quot;message&quot;: {
+            &quot;role&quot;: &quot;assistant&quot;,
+            &quot;content&quot;: &quot;FALLBACK_OK&quot;
+          },
+          &quot;logprobs&quot;: null
+        }
+      ],
+      &quot;usage&quot;: {
+        &quot;prompt_tokens&quot;: 55,
+        &quot;completion_tokens&quot;: 43,
+        &quot;total_tokens&quot;: 98,
+        &quot;prompt_tokens_details&quot;: {
+          &quot;cached_tokens&quot;: 0,
+          &quot;audio_tokens&quot;: 0,
+          &quot;video_tokens&quot;: 0
+        },
+        &quot;completion_tokens_details&quot;: {
+          &quot;reasoning_tokens&quot;: 38,
+          &quot;image_tokens&quot;: 0
+        },
+        &quot;cache_creation_input_tokens&quot;: 0,
+        &quot;cost&quot;: 0,
+        &quot;usage_evidence&quot;: {
+          &quot;input&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;output&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;cacheRead&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;cacheCreation&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          }
+        }
+      },
+      &quot;system_fingerprint&quot;: &quot;fp_fa2jdd5wpv&quot;
+    },
+    &quot;routing_headers&quot;: {
+      &quot;x-omniroute-route-class&quot;: &quot;CLIENT_API&quot;,
+      &quot;x-omniroute-cache&quot;: &quot;MISS&quot;,
+      &quot;x-omniroute-cache-hit&quot;: &quot;false&quot;,
+      &quot;x-omniroute-combo-trace&quot;: &quot;combo-d86bf1fa-c026-41f7-b4e5-a34d1ef5e1ce&quot;,
+      &quot;x-omniroute-compression&quot;: &quot;off; source=off&quot;,
+      &quot;x-omniroute-decision&quot;: &quot;strategy=priority; provider=openai-compatible-chat-76dcfb3c-9c6c-4c24-bb2b-a122e147b075; latency_ms=767&quot;,
+      &quot;x-omniroute-fallback-attempts&quot;: &quot;1&quot;,
+      &quot;x-omniroute-latency-ms&quot;: &quot;767&quot;,
+      &quot;x-omniroute-model&quot;: &quot;kilo-auto/free&quot;,
+      &quot;x-omniroute-provider&quot;: &quot;openai-compatible-chat-76dcfb3c-9c6c-4c24-bb2b-a122e147b075&quot;,
+      &quot;x-omniroute-request-id&quot;: &quot;19a3a52c-fc5e-4cf7-b3e6-be93b53376ad&quot;,
+      &quot;x-omniroute-response-cost&quot;: &quot;0.0000000000&quot;,
+      &quot;x-omniroute-selected-connection-id&quot;: &quot;01346b0f-c8a4-4d5b-aef9-80331b18ac26&quot;,
+      &quot;x-omniroute-session-id&quot;: &quot;ef16f2840293f825&quot;,
+      &quot;x-omniroute-tokens-in&quot;: &quot;55&quot;,
+      &quot;x-omniroute-tokens-out&quot;: &quot;43&quot;,
+      &quot;x-omniroute-version&quot;: &quot;3.8.54&quot;
+    },
+    &quot;elapsed_s&quot;: 0.878
+  },
+  &quot;fixture.json&quot;: {
+    &quot;synthetic&quot;: true,
+    &quot;challenge&quot;: &quot;c10d70e3e26a969adf051918&quot;,
+    &quot;tasks&quot;: [
+      {
+        &quot;id&quot;: &quot;T1&quot;,
+        &quot;status&quot;: &quot;DONE&quot;,
+        &quot;effort&quot;: 3
+      },
+      {
+        &quot;id&quot;: &quot;T2&quot;,
+        &quot;status&quot;: &quot;RUNNING&quot;,
+        &quot;effort&quot;: 5
+      },
+      {
+        &quot;id&quot;: &quot;T3&quot;,
+        &quot;status&quot;: &quot;BLOCKED&quot;,
+        &quot;effort&quot;: 2
+      },
+      {
+        &quot;id&quot;: &quot;T4&quot;,
+        &quot;status&quot;: &quot;READY&quot;,
+        &quot;effort&quot;: 4
+      },
+      {
+        &quot;id&quot;: &quot;T5&quot;,
+        &quot;status&quot;: &quot;DONE&quot;,
+        &quot;effort&quot;: 1
+      },
+      {
+        &quot;id&quot;: &quot;T6&quot;,
+        &quot;status&quot;: &quot;READY&quot;,
+        &quot;effort&quot;: 2
+      }
+    ]
+  },
+  &quot;gateway-health.json&quot;: {
+    &quot;at&quot;: &quot;2026-11-25T13:21:01.432930+00:00&quot;,
+    &quot;version&quot;: &quot;3.8.54&quot;,
+    &quot;status&quot;: 200,
+    &quot;data&quot;: {
+      &quot;status&quot;: &quot;ok&quot;,
+      &quot;timestamp&quot;: &quot;2026-11-25T13:21:01.431Z&quot;
+    },
+    &quot;routing_headers&quot;: {
+      &quot;x-omniroute-route-class&quot;: &quot;PUBLIC&quot;
+    },
+    &quot;elapsed_s&quot;: 1.131
+  },
+  &quot;independent-verification.json&quot;: {
+    &quot;checked_at&quot;: &quot;2026-11-25T13:22:51.369088+00:00&quot;,
+    &quot;checks&quot;: {
+      &quot;Indicateurs recalculés indépendamment&quot;: true,
+      &quot;Audit recalculé indépendamment&quot;: true,
+      &quot;Lecture et écriture d’outils pour chaque agent&quot;: true,
+      &quot;Réponses de modèles réelles et cache évité&quot;: true,
+      &quot;Point de reprise intact&quot;: true,
+      &quot;Deux processus d’agents distincts&quot;: true,
+      &quot;Secours après panne locale simulée&quot;: true,
+      &quot;Instance temporaire arrêtée&quot;: true,
+      &quot;Critères du superviseur&quot;: true
+    },
+    &quot;all_passed&quot;: true,
+    &quot;evidence_hashes&quot;: {
+      &quot;gateway-health.json&quot;: &quot;deda951651fc8ab9e5447f3cc51e45ba3d2ca5fbd63c289fa06db303979ef07b&quot;,
+      &quot;metrics-call-2.json&quot;: &quot;375b360ec85d8c73d2cce192148bf40d76a46b918f3e14c70cb1723af9ebeea1&quot;,
+      &quot;audit-call-1.json&quot;: &quot;74127a2b36cfd72487b58bea7c92bf33ec5719fb487763f06dcffb05346218b6&quot;,
+      &quot;checkpoint.json&quot;: &quot;60a51b3dd7059d0363fdb0946e7a2db2931911c389474cb8b2532008a56b1711&quot;,
+      &quot;audit-result.json&quot;: &quot;4fb58f6cb6751716cc2658af300258ae72ec32f854957cc3b0a0ea256c8395c0&quot;,
+      &quot;audit-call-3.json&quot;: &quot;49e2cd0361551b3353b8c8c24b54b253a1de170095eab24ca07c5ff24f2295d9&quot;,
+      &quot;metrics-call-1.json&quot;: &quot;317cd5e37cee5821fb15a731eadcb76393733e6e9fa43237de7d820e0af06e1d&quot;,
+      &quot;pilot-pollinations-connection-test.json&quot;: &quot;a64d870f4a8c433bfffa697703e65f8b73c7dc80475a665ce706593eb4297dec&quot;,
+      &quot;fixture.json&quot;: &quot;2e4e83a05c7825777f27ff6b9838fc58a73b536f5693a5a887531d7119c28895&quot;,
+      &quot;pilot-kilo-connection-test.json&quot;: &quot;5f370251f0e2a86d13b2b48336151b423270efee7c020e037dd97f021b66eab3&quot;,
+      &quot;metrics-result.json&quot;: &quot;833c7b847ba56870174640fe640997554384fe451e02848b672169f6a9f0bda6&quot;,
+      &quot;audit-call-2.json&quot;: &quot;bfb1d3ff0a83fad538ddb59e1007a3c32d1383a2a32d72e97dc1e43170f91aca&quot;,
+      &quot;fallback-result.json&quot;: &quot;df57dbdb7a0a14dbb157786bfecaa96c72ecfbd252306259159f249cdfe87960&quot;,
+      &quot;summary.json&quot;: &quot;162d4354ed02da2db318ac36a73b61a7f4cdfbee8cf29ec977070d4812ffee7e&quot;
+    }
+  },
+  &quot;metrics-call-1.json&quot;: {
+    &quot;at&quot;: &quot;2026-11-25T13:21:14.912646+00:00&quot;,
+    &quot;agent&quot;: &quot;metrics&quot;,
+    &quot;request&quot;: {
+      &quot;model&quot;: &quot;pilot-kilo/kilo-auto/free&quot;,
+      &quot;messages&quot;: [
+        {
+          &quot;role&quot;: &quot;system&quot;,
+          &quot;content&quot;: &quot;You are a bounded specialist sub-agent in a synthetic acceptance experiment. First call read_fixture. Use its actual returned data and challenge. Then call submit_result with exactly the schema fields. Never invent missing data. Metrics: count tasks by status and sum effort only for tasks whose status is not DONE. Audit: list sorted IDs by BLOCKED, RUNNING, READY status. No prose, no extra tools.&quot;
+        },
+        {
+          &quot;role&quot;: &quot;user&quot;,
+          &quot;content&quot;: &quot;Perform your metrics mission. Read the fixture and submit the result.&quot;
+        }
+      ],
+      &quot;tools&quot;: [
+        {
+          &quot;type&quot;: &quot;function&quot;,
+          &quot;function&quot;: {
+            &quot;name&quot;: &quot;read_fixture&quot;,
+            &quot;description&quot;: &quot;Read the local synthetic task fixture.&quot;,
+            &quot;parameters&quot;: {
+              &quot;type&quot;: &quot;object&quot;,
+              &quot;properties&quot;: {},
+              &quot;additionalProperties&quot;: false
+            }
+          }
+        },
+        {
+          &quot;type&quot;: &quot;function&quot;,
+          &quot;function&quot;: {
+            &quot;name&quot;: &quot;submit_result&quot;,
+            &quot;description&quot;: &quot;Validate and write the final specialist result as a real local JSON artifact.&quot;,
+            &quot;parameters&quot;: {
+              &quot;type&quot;: &quot;object&quot;,
+              &quot;properties&quot;: {
+                &quot;challenge&quot;: {
+                  &quot;type&quot;: &quot;string&quot;
+                },
+                &quot;total&quot;: {
+                  &quot;type&quot;: &quot;integer&quot;
+                },
+                &quot;counts&quot;: {
+                  &quot;type&quot;: &quot;object&quot;,
+                  &quot;properties&quot;: {
+                    &quot;DONE&quot;: {
+                      &quot;type&quot;: &quot;integer&quot;
+                    },
+                    &quot;RUNNING&quot;: {
+                      &quot;type&quot;: &quot;integer&quot;
+                    },
+                    &quot;BLOCKED&quot;: {
+                      &quot;type&quot;: &quot;integer&quot;
+                    },
+                    &quot;READY&quot;: {
+                      &quot;type&quot;: &quot;integer&quot;
+                    }
+                  },
+                  &quot;required&quot;: [
+                    &quot;DONE&quot;,
+                    &quot;RUNNING&quot;,
+                    &quot;BLOCKED&quot;,
+                    &quot;READY&quot;
+                  ],
+                  &quot;additionalProperties&quot;: false
+                },
+                &quot;remaining_effort_points&quot;: {
+                  &quot;type&quot;: &quot;integer&quot;
+                }
+              },
+              &quot;required&quot;: [
+                &quot;challenge&quot;,
+                &quot;total&quot;,
+                &quot;counts&quot;,
+                &quot;remaining_effort_points&quot;
+              ],
+              &quot;additionalProperties&quot;: false
+            }
+          }
+        }
+      ],
+      &quot;tool_choice&quot;: &quot;auto&quot;,
+      &quot;max_tokens&quot;: 1536,
+      &quot;stream&quot;: false
+    },
+    &quot;http_status&quot;: 200,
+    &quot;response_id&quot;: &quot;gen_01M89DW4FV2JZB18MCM2XKS394&quot;,
+    &quot;returned_model&quot;: &quot;kilo-auto/free&quot;,
+    &quot;usage&quot;: {
+      &quot;prompt_tokens&quot;: 234,
+      &quot;completion_tokens&quot;: 28,
+      &quot;total_tokens&quot;: 262,
+      &quot;prompt_tokens_details&quot;: {
+        &quot;cached_tokens&quot;: 0,
+        &quot;audio_tokens&quot;: 0,
+        &quot;video_tokens&quot;: 0
+      },
+      &quot;completion_tokens_details&quot;: {
+        &quot;reasoning_tokens&quot;: 20,
+        &quot;image_tokens&quot;: 0
+      },
+      &quot;cache_creation_input_tokens&quot;: 0,
+      &quot;cost&quot;: 0,
+      &quot;usage_evidence&quot;: {
+        &quot;input&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        },
+        &quot;output&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        },
+        &quot;cacheRead&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        },
+        &quot;cacheCreation&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        }
+      }
+    },
+    &quot;message&quot;: {
+      &quot;role&quot;: &quot;assistant&quot;,
+      &quot;content&quot;: null,
+      &quot;tool_calls&quot;: [
+        {
+          &quot;id&quot;: &quot;call-09e0ebc7-76aa-4ffa-a826-67847e883e74&quot;,
+          &quot;type&quot;: &quot;function&quot;,
+          &quot;function&quot;: {
+            &quot;name&quot;: &quot;read_fixture&quot;,
+            &quot;arguments&quot;: &quot;{}&quot;
+          }
+        }
+      ]
+    },
+    &quot;routing_headers&quot;: {
+      &quot;x-omniroute-route-class&quot;: &quot;CLIENT_API&quot;,
+      &quot;x-omniroute-cache&quot;: &quot;MISS&quot;,
+      &quot;x-omniroute-cache-hit&quot;: &quot;false&quot;,
+      &quot;x-omniroute-compression&quot;: &quot;off; source=off&quot;,
+      &quot;x-omniroute-decision&quot;: &quot;strategy=single; provider=openai-compatible-chat-76dcfb3c-9c6c-4c24-bb2b-a122e147b075; latency_ms=2296&quot;,
+      &quot;x-omniroute-latency-ms&quot;: &quot;2296&quot;,
+      &quot;x-omniroute-model&quot;: &quot;kilo-auto/free&quot;,
+      &quot;x-omniroute-provider&quot;: &quot;openai-compatible-chat-76dcfb3c-9c6c-4c24-bb2b-a122e147b075&quot;,
+      &quot;x-omniroute-request-id&quot;: &quot;815a4655-eb41-4102-b171-b93127d6f251&quot;,
+      &quot;x-omniroute-response-cost&quot;: &quot;0.0000000000&quot;,
+      &quot;x-omniroute-selected-connection-id&quot;: &quot;01346b0f-c8a4-4d5b-aef9-80331b18ac26&quot;,
+      &quot;x-omniroute-session-id&quot;: &quot;d5ed9af43d471d47&quot;,
+      &quot;x-omniroute-tokens-in&quot;: &quot;234&quot;,
+      &quot;x-omniroute-tokens-out&quot;: &quot;28&quot;,
+      &quot;x-omniroute-version&quot;: &quot;3.8.54&quot;
+    },
+    &quot;elapsed_s&quot;: 2.627
+  },
+  &quot;metrics-call-2.json&quot;: {
+    &quot;at&quot;: &quot;2026-11-25T13:21:18.263326+00:00&quot;,
+    &quot;agent&quot;: &quot;metrics&quot;,
+    &quot;request&quot;: {
+      &quot;model&quot;: &quot;pilot-kilo/kilo-auto/free&quot;,
+      &quot;messages&quot;: [
+        {
+          &quot;role&quot;: &quot;system&quot;,
+          &quot;content&quot;: &quot;You are a bounded specialist sub-agent in a synthetic acceptance experiment. First call read_fixture. Use its actual returned data and challenge. Then call submit_result with exactly the schema fields. Never invent missing data. Metrics: count tasks by status and sum effort only for tasks whose status is not DONE. Audit: list sorted IDs by BLOCKED, RUNNING, READY status. No prose, no extra tools.&quot;
+        },
+        {
+          &quot;role&quot;: &quot;user&quot;,
+          &quot;content&quot;: &quot;Perform your metrics mission. Read the fixture and submit the result.&quot;
+        },
+        {
+          &quot;role&quot;: &quot;assistant&quot;,
+          &quot;content&quot;: null,
+          &quot;tool_calls&quot;: [
+            {
+              &quot;id&quot;: &quot;call-09e0ebc7-76aa-4ffa-a826-67847e883e74&quot;,
+              &quot;type&quot;: &quot;function&quot;,
+              &quot;function&quot;: {
+                &quot;name&quot;: &quot;read_fixture&quot;,
+                &quot;arguments&quot;: &quot;{}&quot;
+              }
+            }
+          ]
+        },
+        {
+          &quot;role&quot;: &quot;tool&quot;,
+          &quot;tool_call_id&quot;: &quot;call-09e0ebc7-76aa-4ffa-a826-67847e883e74&quot;,
+          &quot;content&quot;: &quot;{\&quot;synthetic\&quot;: true, \&quot;challenge\&quot;: \&quot;c10d70e3e26a969adf051918\&quot;, \&quot;tasks\&quot;: [{\&quot;id\&quot;: \&quot;T1\&quot;, \&quot;status\&quot;: \&quot;DONE\&quot;, \&quot;effort\&quot;: 3}, {\&quot;id\&quot;: \&quot;T2\&quot;, \&quot;status\&quot;: \&quot;RUNNING\&quot;, \&quot;effort\&quot;: 5}, {\&quot;id\&quot;: \&quot;T3\&quot;, \&quot;status\&quot;: \&quot;BLOCKED\&quot;, \&quot;effort\&quot;: 2}, {\&quot;id\&quot;: \&quot;T4\&quot;, \&quot;status\&quot;: \&quot;READY\&quot;, \&quot;effort\&quot;: 4}, {\&quot;id\&quot;: \&quot;T5\&quot;, \&quot;status\&quot;: \&quot;DONE\&quot;, \&quot;effort\&quot;: 1}, {\&quot;id\&quot;: \&quot;T6\&quot;, \&quot;status\&quot;: \&quot;READY\&quot;, \&quot;effort\&quot;: 2}]}&quot;
+        }
+      ],
+      &quot;tools&quot;: [
+        {
+          &quot;type&quot;: &quot;function&quot;,
+          &quot;function&quot;: {
+            &quot;name&quot;: &quot;read_fixture&quot;,
+            &quot;description&quot;: &quot;Read the local synthetic task fixture.&quot;,
+            &quot;parameters&quot;: {
+              &quot;type&quot;: &quot;object&quot;,
+              &quot;properties&quot;: {},
+              &quot;additionalProperties&quot;: false
+            }
+          }
+        },
+        {
+          &quot;type&quot;: &quot;function&quot;,
+          &quot;function&quot;: {
+            &quot;name&quot;: &quot;submit_result&quot;,
+            &quot;description&quot;: &quot;Validate and write the final specialist result as a real local JSON artifact.&quot;,
+            &quot;parameters&quot;: {
+              &quot;type&quot;: &quot;object&quot;,
+              &quot;properties&quot;: {
+                &quot;challenge&quot;: {
+                  &quot;type&quot;: &quot;string&quot;
+                },
+                &quot;total&quot;: {
+                  &quot;type&quot;: &quot;integer&quot;
+                },
+                &quot;counts&quot;: {
+                  &quot;type&quot;: &quot;object&quot;,
+                  &quot;properties&quot;: {
+                    &quot;DONE&quot;: {
+                      &quot;type&quot;: &quot;integer&quot;
+                    },
+                    &quot;RUNNING&quot;: {
+                      &quot;type&quot;: &quot;integer&quot;
+                    },
+                    &quot;BLOCKED&quot;: {
+                      &quot;type&quot;: &quot;integer&quot;
+                    },
+                    &quot;READY&quot;: {
+                      &quot;type&quot;: &quot;integer&quot;
+                    }
+                  },
+                  &quot;required&quot;: [
+                    &quot;DONE&quot;,
+                    &quot;RUNNING&quot;,
+                    &quot;BLOCKED&quot;,
+                    &quot;READY&quot;
+                  ],
+                  &quot;additionalProperties&quot;: false
+                },
+                &quot;remaining_effort_points&quot;: {
+                  &quot;type&quot;: &quot;integer&quot;
+                }
+              },
+              &quot;required&quot;: [
+                &quot;challenge&quot;,
+                &quot;total&quot;,
+                &quot;counts&quot;,
+                &quot;remaining_effort_points&quot;
+              ],
+              &quot;additionalProperties&quot;: false
+            }
+          }
+        }
+      ],
+      &quot;tool_choice&quot;: &quot;auto&quot;,
+      &quot;max_tokens&quot;: 1536,
+      &quot;stream&quot;: false
+    },
+    &quot;http_status&quot;: 200,
+    &quot;response_id&quot;: &quot;gen_01M89DW6CFHQ3HA4KADME3Q7AF&quot;,
+    &quot;returned_model&quot;: &quot;kilo-auto/free&quot;,
+    &quot;usage&quot;: {
+      &quot;prompt_tokens&quot;: 386,
+      &quot;completion_tokens&quot;: 418,
+      &quot;total_tokens&quot;: 804,
+      &quot;prompt_tokens_details&quot;: {
+        &quot;cached_tokens&quot;: 0,
+        &quot;audio_tokens&quot;: 0,
+        &quot;video_tokens&quot;: 0
+      },
+      &quot;completion_tokens_details&quot;: {
+        &quot;reasoning_tokens&quot;: 337,
+        &quot;image_tokens&quot;: 0
+      },
+      &quot;cache_creation_input_tokens&quot;: 0,
+      &quot;cost&quot;: 0,
+      &quot;usage_evidence&quot;: {
+        &quot;input&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        },
+        &quot;output&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        },
+        &quot;cacheRead&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        },
+        &quot;cacheCreation&quot;: {
+          &quot;source&quot;: &quot;reported&quot;
+        }
+      }
+    },
+    &quot;message&quot;: {
+      &quot;role&quot;: &quot;assistant&quot;,
+      &quot;content&quot;: null,
+      &quot;tool_calls&quot;: [
+        {
+          &quot;id&quot;: &quot;call-4de3d232-c1c2-455a-937f-c5a9cceea042&quot;,
+          &quot;type&quot;: &quot;function&quot;,
+          &quot;function&quot;: {
+            &quot;name&quot;: &quot;submit_result&quot;,
+            &quot;arguments&quot;: &quot;{\&quot;challenge\&quot;: \&quot;c10d70e3e26a969adf051918\&quot;, \&quot;counts\&quot;: {\&quot;DONE\&quot;: 2, \&quot;RUNNING\&quot;: 1, \&quot;BLOCKED\&quot;: 1, \&quot;READY\&quot;: 2}, \&quot;remaining_effort_points\&quot;: 13, \&quot;total\&quot;: 6}&quot;
+          }
+        }
+      ]
+    },
+    &quot;routing_headers&quot;: {
+      &quot;x-omniroute-route-class&quot;: &quot;CLIENT_API&quot;,
+      &quot;x-omniroute-cache&quot;: &quot;MISS&quot;,
+      &quot;x-omniroute-cache-hit&quot;: &quot;false&quot;,
+      &quot;x-omniroute-compression&quot;: &quot;off; source=off&quot;,
+      &quot;x-omniroute-decision&quot;: &quot;strategy=single; provider=openai-compatible-chat-76dcfb3c-9c6c-4c24-bb2b-a122e147b075; latency_ms=3303&quot;,
+      &quot;x-omniroute-latency-ms&quot;: &quot;3303&quot;,
+      &quot;x-omniroute-model&quot;: &quot;kilo-auto/free&quot;,
+      &quot;x-omniroute-provider&quot;: &quot;openai-compatible-chat-76dcfb3c-9c6c-4c24-bb2b-a122e147b075&quot;,
+      &quot;x-omniroute-request-id&quot;: &quot;612a2f09-047f-412a-9a14-1e6d1e8fc33b&quot;,
+      &quot;x-omniroute-response-cost&quot;: &quot;0.0000000000&quot;,
+      &quot;x-omniroute-selected-connection-id&quot;: &quot;01346b0f-c8a4-4d5b-aef9-80331b18ac26&quot;,
+      &quot;x-omniroute-session-id&quot;: &quot;d5ed9af43d471d47&quot;,
+      &quot;x-omniroute-tokens-in&quot;: &quot;386&quot;,
+      &quot;x-omniroute-tokens-out&quot;: &quot;418&quot;,
+      &quot;x-omniroute-version&quot;: &quot;3.8.54&quot;
+    },
+    &quot;elapsed_s&quot;: 3.349
+  },
+  &quot;metrics-result.json&quot;: {
+    &quot;challenge&quot;: &quot;c10d70e3e26a969adf051918&quot;,
+    &quot;counts&quot;: {
+      &quot;DONE&quot;: 2,
+      &quot;RUNNING&quot;: 1,
+      &quot;BLOCKED&quot;: 1,
+      &quot;READY&quot;: 2
+    },
+    &quot;remaining_effort_points&quot;: 13,
+    &quot;total&quot;: 6
+  },
+  &quot;pilot-kilo-connection-test.json&quot;: {
+    &quot;at&quot;: &quot;2026-11-25T13:21:08.140414+00:00&quot;,
+    &quot;endpoint&quot;: &quot;https://api.kilo.ai/api/gateway&quot;,
+    &quot;status&quot;: 200,
+    &quot;data&quot;: {
+      &quot;valid&quot;: true,
+      &quot;error&quot;: null,
+      &quot;warning&quot;: null,
+      &quot;refreshed&quot;: false,
+      &quot;diagnosis&quot;: {
+        &quot;type&quot;: &quot;ok&quot;,
+        &quot;source&quot;: &quot;upstream&quot;,
+        &quot;message&quot;: null,
+        &quot;code&quot;: null
+      },
+      &quot;latencyMs&quot;: 5670,
+      &quot;statusCode&quot;: null,
+      &quot;runtime&quot;: null,
+      &quot;testedAt&quot;: &quot;2026-11-25T13:21:08.129Z&quot;
+    },
+    &quot;routing_headers&quot;: {
+      &quot;x-omniroute-route-class&quot;: &quot;MANAGEMENT&quot;
+    },
+    &quot;elapsed_s&quot;: 5.709
+  },
+  &quot;pilot-pollinations-connection-test.json&quot;: {
+    &quot;at&quot;: &quot;2026-11-25T13:21:11.926056+00:00&quot;,
+    &quot;endpoint&quot;: &quot;https://text.pollinations.ai&quot;,
+    &quot;status&quot;: 200,
+    &quot;data&quot;: {
+      &quot;valid&quot;: true,
+      &quot;error&quot;: null,
+      &quot;warning&quot;: null,
+      &quot;refreshed&quot;: false,
+      &quot;diagnosis&quot;: {
+        &quot;type&quot;: &quot;ok&quot;,
+        &quot;source&quot;: &quot;upstream&quot;,
+        &quot;message&quot;: null,
+        &quot;code&quot;: null
+      },
+      &quot;latencyMs&quot;: 3732,
+      &quot;statusCode&quot;: null,
+      &quot;runtime&quot;: null,
+      &quot;testedAt&quot;: &quot;2026-11-25T13:21:11.913Z&quot;
+    },
+    &quot;routing_headers&quot;: {
+      &quot;x-omniroute-route-class&quot;: &quot;MANAGEMENT&quot;
+    },
+    &quot;elapsed_s&quot;: 3.759
+  },
+  &quot;summary.json&quot;: {
+    &quot;started_at&quot;: &quot;2026-11-25T13:20:51.762115+00:00&quot;,
+    &quot;version&quot;: &quot;3.8.54&quot;,
+    &quot;synthetic_only&quot;: true,
+    &quot;external_accounts_created&quot;: 0,
+    &quot;payment_credentials_supplied&quot;: false,
+    &quot;external_ip_echo_disabled&quot;: true,
+    &quot;background_services_disabled&quot;: true,
+    &quot;production_integration&quot;: false,
+    &quot;checks&quot;: {
+      &quot;gateway_healthy&quot;: true,
+      &quot;two_free_endpoints_validated&quot;: true,
+      &quot;checkpoint_preserved_across_processes&quot;: true,
+      &quot;metrics_tool_result_verified&quot;: true,
+      &quot;audit_tool_result_verified&quot;: true,
+      &quot;two_distinct_agent_processes&quot;: true,
+      &quot;controlled_fallback&quot;: true
+    },
+    &quot;routes&quot;: [
+      &quot;pilot-kilo/kilo-auto/free&quot;,
+      &quot;pilot-pollinations/openai-fast&quot;
+    ],
+    &quot;finished_at&quot;: &quot;2026-11-25T13:21:28.438248+00:00&quot;,
+    &quot;elapsed_s&quot;: 36.68
+  },
+  &quot;events.jsonl&quot;: [
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:20:51.761779+00:00&quot;,
+      &quot;kind&quot;: &quot;pilot_started&quot;,
+      &quot;process_id&quot;: 2
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:02.250615+00:00&quot;,
+      &quot;kind&quot;: &quot;gateway_ready&quot;,
+      &quot;version&quot;: &quot;3.8.54&quot;,
+      &quot;bind&quot;: &quot;127.0.0.1&quot;,
+      &quot;authentication_enabled&quot;: true
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:08.140994+00:00&quot;,
+      &quot;kind&quot;: &quot;public_route_configured&quot;,
+      &quot;route&quot;: &quot;pilot-kilo/kilo-auto/free&quot;,
+      &quot;endpoint&quot;: &quot;https://api.kilo.ai/api/gateway&quot;,
+      &quot;provider_credential_supplied&quot;: false
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:11.927569+00:00&quot;,
+      &quot;kind&quot;: &quot;public_route_configured&quot;,
+      &quot;route&quot;: &quot;pilot-pollinations/openai-fast&quot;,
+      &quot;endpoint&quot;: &quot;https://text.pollinations.ai&quot;,
+      &quot;provider_credential_supplied&quot;: false
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:12.284859+00:00&quot;,
+      &quot;kind&quot;: &quot;agent_started&quot;,
+      &quot;agent&quot;: &quot;metrics&quot;,
+      &quot;process_id&quot;: 28,
+      &quot;process_identity&quot;: {
+        &quot;pid&quot;: 28,
+        &quot;pid_namespace&quot;: &quot;pid:[4026532643]&quot;,
+        &quot;start_ticks&quot;: &quot;5343415&quot;
+      },
+      &quot;requested_model&quot;: &quot;pilot-kilo/kilo-auto/free&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:14.913537+00:00&quot;,
+      &quot;kind&quot;: &quot;model_response&quot;,
+      &quot;agent&quot;: &quot;metrics&quot;,
+      &quot;turn&quot;: 1,
+      &quot;response_id&quot;: &quot;gen_01M89DW4FV2JZB18MCM2XKS394&quot;,
+      &quot;requested_model&quot;: &quot;pilot-kilo/kilo-auto/free&quot;,
+      &quot;returned_model&quot;: &quot;kilo-auto/free&quot;,
+      &quot;usage&quot;: {
+        &quot;prompt_tokens&quot;: 234,
+        &quot;completion_tokens&quot;: 28,
+        &quot;total_tokens&quot;: 262,
+        &quot;prompt_tokens_details&quot;: {
+          &quot;cached_tokens&quot;: 0,
+          &quot;audio_tokens&quot;: 0,
+          &quot;video_tokens&quot;: 0
+        },
+        &quot;completion_tokens_details&quot;: {
+          &quot;reasoning_tokens&quot;: 20,
+          &quot;image_tokens&quot;: 0
+        },
+        &quot;cache_creation_input_tokens&quot;: 0,
+        &quot;cost&quot;: 0,
+        &quot;usage_evidence&quot;: {
+          &quot;input&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;output&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;cacheRead&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;cacheCreation&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          }
+        }
+      },
+      &quot;elapsed_s&quot;: 2.627
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:14.913755+00:00&quot;,
+      &quot;kind&quot;: &quot;tool_executed&quot;,
+      &quot;agent&quot;: &quot;metrics&quot;,
+      &quot;tool&quot;: &quot;read_fixture&quot;,
+      &quot;fixture_sha256&quot;: &quot;2e4e83a05c7825777f27ff6b9838fc58a73b536f5693a5a887531d7119c28895&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:18.264499+00:00&quot;,
+      &quot;kind&quot;: &quot;model_response&quot;,
+      &quot;agent&quot;: &quot;metrics&quot;,
+      &quot;turn&quot;: 2,
+      &quot;response_id&quot;: &quot;gen_01M89DW6CFHQ3HA4KADME3Q7AF&quot;,
+      &quot;requested_model&quot;: &quot;pilot-kilo/kilo-auto/free&quot;,
+      &quot;returned_model&quot;: &quot;kilo-auto/free&quot;,
+      &quot;usage&quot;: {
+        &quot;prompt_tokens&quot;: 386,
+        &quot;completion_tokens&quot;: 418,
+        &quot;total_tokens&quot;: 804,
+        &quot;prompt_tokens_details&quot;: {
+          &quot;cached_tokens&quot;: 0,
+          &quot;audio_tokens&quot;: 0,
+          &quot;video_tokens&quot;: 0
+        },
+        &quot;completion_tokens_details&quot;: {
+          &quot;reasoning_tokens&quot;: 337,
+          &quot;image_tokens&quot;: 0
+        },
+        &quot;cache_creation_input_tokens&quot;: 0,
+        &quot;cost&quot;: 0,
+        &quot;usage_evidence&quot;: {
+          &quot;input&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;output&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;cacheRead&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;cacheCreation&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          }
+        }
+      },
+      &quot;elapsed_s&quot;: 3.349
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:18.265216+00:00&quot;,
+      &quot;kind&quot;: &quot;tool_executed&quot;,
+      &quot;agent&quot;: &quot;metrics&quot;,
+      &quot;tool&quot;: &quot;submit_result&quot;,
+      &quot;artifact&quot;: &quot;metrics-result.json&quot;,
+      &quot;verified&quot;: true
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:18.265260+00:00&quot;,
+      &quot;kind&quot;: &quot;agent_completed&quot;,
+      &quot;agent&quot;: &quot;metrics&quot;,
+      &quot;process_id&quot;: 28,
+      &quot;process_identity&quot;: {
+        &quot;pid&quot;: 28,
+        &quot;pid_namespace&quot;: &quot;pid:[4026532643]&quot;,
+        &quot;start_ticks&quot;: &quot;5343415&quot;
+      },
+      &quot;turns&quot;: 2
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:18.306209+00:00&quot;,
+      &quot;kind&quot;: &quot;execution_stopped_at_checkpoint&quot;,
+      &quot;completed_agents&quot;: [
+        &quot;metrics&quot;
+      ],
+      &quot;child_exit_confirmed&quot;: true
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:18.391669+00:00&quot;,
+      &quot;kind&quot;: &quot;agent_started&quot;,
+      &quot;agent&quot;: &quot;audit&quot;,
+      &quot;process_id&quot;: 31,
+      &quot;process_identity&quot;: {
+        &quot;pid&quot;: 31,
+        &quot;pid_namespace&quot;: &quot;pid:[4026532643]&quot;,
+        &quot;start_ticks&quot;: &quot;5344031&quot;
+      },
+      &quot;requested_model&quot;: &quot;pilot-agent-fallback&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:18.771479+00:00&quot;,
+      &quot;kind&quot;: &quot;model_response&quot;,
+      &quot;agent&quot;: &quot;audit&quot;,
+      &quot;turn&quot;: 1,
+      &quot;response_id&quot;: &quot;pllns_ee59744e62fca0ab51dfa3e00a105a33&quot;,
+      &quot;requested_model&quot;: &quot;pilot-agent-fallback&quot;,
+      &quot;returned_model&quot;: &quot;openai-fast&quot;,
+      &quot;usage&quot;: {
+        &quot;prompt_tokens&quot;: 260,
+        &quot;completion_tokens&quot;: 89,
+        &quot;total_tokens&quot;: 349,
+        &quot;prompt_tokens_details&quot;: {
+          &quot;cached_tokens&quot;: 80
+        },
+        &quot;completion_tokens_details&quot;: {
+          &quot;reasoning_tokens&quot;: 0
+        },
+        &quot;usage_evidence&quot;: {
+          &quot;input&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;output&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;cacheRead&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;cacheCreation&quot;: {
+            &quot;source&quot;: &quot;unknown&quot;
+          }
+        }
+      },
+      &quot;elapsed_s&quot;: 0.379
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:18.771661+00:00&quot;,
+      &quot;kind&quot;: &quot;tool_executed&quot;,
+      &quot;agent&quot;: &quot;audit&quot;,
+      &quot;tool&quot;: &quot;read_fixture&quot;,
+      &quot;fixture_sha256&quot;: &quot;2e4e83a05c7825777f27ff6b9838fc58a73b536f5693a5a887531d7119c28895&quot;
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:24.397078+00:00&quot;,
+      &quot;kind&quot;: &quot;model_response&quot;,
+      &quot;agent&quot;: &quot;audit&quot;,
+      &quot;turn&quot;: 2,
+      &quot;response_id&quot;: &quot;pllns_ba61dbcf59a0a9e716575f7b4a115ac6&quot;,
+      &quot;requested_model&quot;: &quot;pilot-agent-fallback&quot;,
+      &quot;returned_model&quot;: &quot;openai-fast&quot;,
+      &quot;usage&quot;: {
+        &quot;prompt_tokens&quot;: 437,
+        &quot;completion_tokens&quot;: 96,
+        &quot;total_tokens&quot;: 533,
+        &quot;prompt_tokens_details&quot;: {
+          &quot;cached_tokens&quot;: 80
+        },
+        &quot;completion_tokens_details&quot;: {
+          &quot;reasoning_tokens&quot;: 0
+        },
+        &quot;usage_evidence&quot;: {
+          &quot;input&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;output&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;cacheRead&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;cacheCreation&quot;: {
+            &quot;source&quot;: &quot;unknown&quot;
+          }
+        }
+      },
+      &quot;elapsed_s&quot;: 5.624
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:24.397447+00:00&quot;,
+      &quot;kind&quot;: &quot;submission_rejected&quot;,
+      &quot;agent&quot;: &quot;audit&quot;,
+      &quot;arguments&quot;: {
+        &quot;active_task_ids&quot;: [],
+        &quot;blocked_task_ids&quot;: [
+          &quot;T3&quot;
+        ],
+        &quot;challenge&quot;: &quot;c10d70e3e26a969adf051918&quot;,
+        &quot;ready_task_ids&quot;: [
+          &quot;T4&quot;,
+          &quot;T6&quot;
+        ]
+      }
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:26.753838+00:00&quot;,
+      &quot;kind&quot;: &quot;model_response&quot;,
+      &quot;agent&quot;: &quot;audit&quot;,
+      &quot;turn&quot;: 3,
+      &quot;response_id&quot;: &quot;gen_01M89DWG0D4M6R9Y2X553H8HQ8&quot;,
+      &quot;requested_model&quot;: &quot;pilot-agent-fallback&quot;,
+      &quot;returned_model&quot;: &quot;kilo-auto/free&quot;,
+      &quot;usage&quot;: {
+        &quot;prompt_tokens&quot;: 525,
+        &quot;completion_tokens&quot;: 197,
+        &quot;total_tokens&quot;: 722,
+        &quot;prompt_tokens_details&quot;: {
+          &quot;cached_tokens&quot;: 192,
+          &quot;audio_tokens&quot;: 0,
+          &quot;video_tokens&quot;: 0
+        },
+        &quot;completion_tokens_details&quot;: {
+          &quot;reasoning_tokens&quot;: 126,
+          &quot;image_tokens&quot;: 0
+        },
+        &quot;cache_creation_input_tokens&quot;: 0,
+        &quot;cost&quot;: 0,
+        &quot;usage_evidence&quot;: {
+          &quot;input&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;output&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;cacheRead&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          },
+          &quot;cacheCreation&quot;: {
+            &quot;source&quot;: &quot;reported&quot;
+          }
+        }
+      },
+      &quot;elapsed_s&quot;: 2.355
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:26.754531+00:00&quot;,
+      &quot;kind&quot;: &quot;tool_executed&quot;,
+      &quot;agent&quot;: &quot;audit&quot;,
+      &quot;tool&quot;: &quot;submit_result&quot;,
+      &quot;artifact&quot;: &quot;audit-result.json&quot;,
+      &quot;verified&quot;: true
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:26.754577+00:00&quot;,
+      &quot;kind&quot;: &quot;agent_completed&quot;,
+      &quot;agent&quot;: &quot;audit&quot;,
+      &quot;process_id&quot;: 31,
+      &quot;process_identity&quot;: {
+        &quot;pid&quot;: 31,
+        &quot;pid_namespace&quot;: &quot;pid:[4026532643]&quot;,
+        &quot;start_ticks&quot;: &quot;5344031&quot;
+      },
+      &quot;turns&quot;: 3
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:26.811902+00:00&quot;,
+      &quot;kind&quot;: &quot;execution_resumed&quot;,
+      &quot;prior_result_preserved&quot;: true,
+      &quot;child_processes&quot;: [
+        28,
+        31
+      ]
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:26.839392+00:00&quot;,
+      &quot;kind&quot;: &quot;public_route_configured&quot;,
+      &quot;route&quot;: &quot;pilot-fault/synthetic-unavailable&quot;,
+      &quot;endpoint&quot;: &quot;http://127.0.0.1:20149/v1&quot;,
+      &quot;provider_credential_supplied&quot;: false
+    },
+    {
+      &quot;at&quot;: &quot;2026-11-25T13:21:28.438097+00:00&quot;,
+      &quot;kind&quot;: &quot;gateway_stopped&quot;,
+      &quot;exit_code&quot;: 0
+    }
+  ]
+}</pre></details><footer>Données synthétiques uniquement. Aucun secret ni état de connexion inclus. Les fichiers JSON, le programme de test, ses instructions et le verrouillage des dépendances figurent dans l’archive associée.</footer></main></html>

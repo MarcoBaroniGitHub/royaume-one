@@ -1,0 +1,9 @@
+{
+  "name": "royaume-one",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Royaume ONE — context boundaries and an extensible ecosystem for people, tools and agents",
+  "engines": { "node": ">=22" },
+  "scripts": { "test": "node --test", "build": "node scripts/build.mjs" }
+}

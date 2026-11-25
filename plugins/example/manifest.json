@@ -1,0 +1,11 @@
+{
+  "id": "example.readonly-summary",
+  "name": "Read-only project summary",
+  "version": "0.1.0",
+  "apiVersion": "0.1",
+  "minHostVersion": "0.1.0",
+  "status": "contract-example-not-executable",
+  "requestedCapabilities": ["resources.read", "ui.panel"],
+  "networkDestinations": [],
+  "description": "Summarize only resources already allowed for the current workspace, project and purpose. No external send capability."
+}

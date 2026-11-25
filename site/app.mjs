@@ -1,3 +1,6 @@
+// Copyright 2026 Marco Baroni and the Royaume ONE contributors.
+// SPDX-License-Identifier: Apache-2.0
+
 import { authorize } from './packages/core/policy.mjs';
 
 const switches = ['agents', 'reference', 'external'].map(id => document.getElementById(id));

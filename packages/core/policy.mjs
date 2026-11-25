@@ -1,3 +1,6 @@
+// Copyright 2026 Marco Baroni and the Royaume ONE contributors.
+// SPDX-License-Identifier: Apache-2.0
+
 // Experimental decision function. All identities, resources and grants must come
 // from a trusted host. This module is not authentication or plugin isolation.
 const OPERATIONS = new Set(['read', 'export', 'publish']);

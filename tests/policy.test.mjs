@@ -1,3 +1,6 @@
+// Copyright 2026 Marco Baroni and the Royaume ONE contributors.
+// SPDX-License-Identifier: Apache-2.0
+
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { authorize, authorizeDerived } from '../packages/core/policy.mjs';

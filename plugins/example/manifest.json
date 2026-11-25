@@ -2,6 +2,7 @@
   "id": "example.readonly-summary",
   "name": "Read-only project summary",
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "apiVersion": "0.1",
   "minHostVersion": "0.1.0",
   "status": "contract-example-not-executable",

@@ -10,7 +10,7 @@ Un espace individuel et un espace d'entreprise reposent sur le même noyau ; ils
 
 Une présentation publique, une démonstration interactive et un moteur de décision minimal testé sur des exemples fictifs. Les contrats des plugins, le modèle économique et la feuille de route sont documentés. Le cockpit privé existant n'est pas copié ici.
 
-L'objectif est open source. Le choix de licence reste à adopter : ce dépôt public n'accorde pas encore de droits de réutilisation. Apache-2.0 est la proposition détaillée dans [le dossier licence](licensing.md).
+Le code original et la documentation de ce dépôt sont sous [Apache-2.0](../LICENSE), adopté le 25 novembre 2026. Les contributions sont ouvertes selon [les règles du projet](../CONTRIBUTING.md). La fondation reste expérimentale ; la licence ne constitue pas une garantie de fonctionnement en production. Voir [le dossier licence](licensing.md).
 
 ## Le verrou d'une ressource
 

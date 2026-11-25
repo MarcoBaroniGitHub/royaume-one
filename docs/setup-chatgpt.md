@@ -1,6 +1,6 @@
 # Démarrer avec ChatGPT — guide 0.1.0
 
-Ce guide prépare un usage assisté du Royaume. Il ne transforme pas le démonstrateur en plateforme autonome. Aucune instruction de compte ChatGPT ni connexion n'est modifiée par le téléchargement du dépôt. La licence du projet reste à adopter.
+Ce guide prépare un usage assisté du Royaume. Il ne transforme pas le démonstrateur en plateforme autonome. Aucune instruction de compte ChatGPT ni connexion n'est modifiée par le téléchargement du dépôt. Le code original et la documentation de ce dépôt sont sous [Apache-2.0](../LICENSE).
 
 ## Ce qui doit être installé ou configuré
 

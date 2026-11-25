@@ -12,7 +12,7 @@ An Open Networked Ecosystem for connecting projects, knowledge, tools and AI age
 
 This is a new, deliberately small foundation for the future community project. It contains original code, synthetic examples, a presentation website, a policy demonstrator and automated tests. It is **not the existing private cockpit**, a migration of its history, or a production agent runtime.
 
-The intended destination is an open-source project. **The license has not yet been adopted. This repository is not yet an open-source release and does not currently grant reuse rights.** Apache-2.0 is the maintainer's proposed decision to review; see [licensing](docs/licensing.md). Discuss design and use cases through issues; code contributions open after the license decision.
+**This foundation is licensed under [Apache-2.0](LICENSE), adopted on 25 November 2026.** The license covers the original code and documentation in this repository, including the example plugin manifest. Commercial reuse and closed-source derivatives are permitted under its terms. See [licensing](docs/licensing.md), [NOTICE](NOTICE) and [contribution guidelines](CONTRIBUTING.md). This is experimental software, not a stable production release.
 
 ## Why Royaume?
 
@@ -54,7 +54,7 @@ Open http://localhost:8000. The interactive example runs locally in your browser
 
 ## First milestones
 
-1. Adopt the open-source license and contribution rules.
+1. Welcome focused contributions under the adopted Apache-2.0 license and contribution rules.
 2. Connect the policy to authenticated backend reads, search and outgoing operations.
 3. Demonstrate one useful workflow with a real adapter, interruption and duplicate prevention.
 4. Add an isolated plugin host and an example extension using only the public API.

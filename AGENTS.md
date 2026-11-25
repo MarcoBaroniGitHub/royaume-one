@@ -2,7 +2,7 @@
 
 This is the new generic foundation, not the private operational cockpit. Keep all examples synthetic. Never import personal histories, private registry contents, credentials or production data into this public repository.
 
-The license is pending an explicit owner decision. Do not claim this is an open-source release, adopt a license, or accept code contributions until that decision is recorded.
+The owner explicitly adopted Apache-2.0 on 25 November 2026 for the original code and documentation in this repository. Preserve LICENSE, NOTICE and source notices. Contributions follow CONTRIBUTING.md. Do not change the license without an explicit owner decision, or imply that this license covers private operational data, the separate private cockpit or third-party code.
 
 `packages/core/policy.mjs` is an experimental pure decision function. Do not claim production isolation until authentication, trusted server records, storage filters, outgoing gateways and isolated plugin execution have been integrated and tested. UI switches alone are not enforcement.
 

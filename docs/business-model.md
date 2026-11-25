@@ -6,7 +6,7 @@ Financer un socle ouvert utile par du soutien volontaire et des services : insta
 
 | Voie | Valeur vendue | Moment pertinent |
 | --- | --- | --- |
-| GitHub Sponsors ou soutien volontaire | Soutenir la maintenance ; reconnaissance facultative | Après ouverture de licence et activation réelle du profil |
+| GitHub Sponsors ou soutien volontaire | Soutenir la maintenance ; reconnaissance facultative | Après activation réelle du profil ; Apache-2.0 est adopté |
 | Intégration et support | Installer, connecter les outils, former, diagnostiquer | Dès qu'un pilote utile est reproductible |
 | Hébergement géré | Épargner installation, sauvegardes et maintenance | Après mesure du coût réel et de la fiabilité |
 | Entreprise | SSO, déploiement dédié, accompagnement, engagements contractuels | Après preuve d'isolation, révocation et exploitation |
@@ -26,7 +26,7 @@ Recettes encaissées moins hébergement, stockage, consommation de modèles, pai
 
 ## Source ouverte et marque
 
-Proposition : noyau et SDK sous Apache-2.0 pour favoriser l'adoption et les extensions commerciales ; marque et services hébergés distincts. La décision appartient au propriétaire. AGPL-3.0 est l'alternative si le partage des modifications de versions servies en réseau est prioritaire. Aucune licence n'est adoptée par cette note. Ne pas appeler « open source » une licence qui interdit certains usages commerciaux.
+Choix adopté le 25 novembre 2026 : code original et documentation du socle sous [Apache-2.0](../LICENSE), pour favoriser l'adoption et les extensions commerciales. Le même choix est prévu pour le futur SDK ; les plugins tiers conservent leur propre licence compatible. Marque et services hébergés restent distincts. Apache-2.0 autorise les dérivés fermés et n'impose pas le retour des améliorations au dépôt. Ne pas appeler « open source » une licence qui interdit certains usages commerciaux.
 
 ## Lancement crédible
 

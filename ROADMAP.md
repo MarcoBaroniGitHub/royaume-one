@@ -3,7 +3,7 @@
 | Milestone | Acceptance evidence | State |
 | --- | --- | --- |
 | Foundation | Public presentation, documented boundaries and reproducible policy tests | Initial implementation |
-| Open-source release | Owner-selected license, exact license file and contribution terms | Decision pending |
+| Open-source licensing | Official Apache-2.0 text, notices and contribution terms | Adopted 25 November 2026; no tagged release yet |
 | Enforced boundaries | Authenticated server rejects unauthorized reads/searches/exports across two spaces; revocation takes effect | Planned |
 | Useful adapter | One real workflow, dated evidence, interruption and duplicate prevention | Planned |
 | Plugin host | Isolated example extension, validated messages, denied file/network access, compatibility tests | Planned |

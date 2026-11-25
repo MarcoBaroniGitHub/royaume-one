@@ -6,6 +6,8 @@ An Open Networked Ecosystem for connecting projects, knowledge, tools and AI age
 
 [Explore the demonstrator](https://royaume-one.vercel.app) · [Architecture](docs/architecture.md) · [Plugin contract](docs/plugins.md) · [Business model](docs/business-model.md) · [Français](docs/README.fr.md)
 
+[ChatGPT setup](docs/setup-chatgpt.md) · [Personal and professional spaces](docs/spaces.md) · [Choosing a version](docs/versioning.md)
+
 ## Status: early foundation
 
 This is a new, deliberately small foundation for the future community project. It contains original code, synthetic examples, a presentation website, a policy demonstrator and automated tests. It is **not the existing private cockpit**, a migration of its history, or a production agent runtime.
@@ -42,6 +44,8 @@ Open http://localhost:8000. The interactive example runs locally in your browser
 | Deny-by-default policy function | Implemented and tested on synthetic records |
 | Per-purpose access, organization/project boundaries, external sharing | Demonstrated in policy tests |
 | Derived-resource checks and revocation on next check | Demonstrated in policy tests |
+| ChatGPT setup and project instruction template | Documented; not automatically installed in your account |
+| Version selection | Git commit pinning documented; no release catalogue or in-app switcher |
 | Plugin manifest and host API | Proposed contract; no third-party loader |
 | Jira, Notion, Gmail and other adapters | Proposed; no live connections in this repository |
 | Authentication, database enforcement, isolated plugin execution | Not implemented |

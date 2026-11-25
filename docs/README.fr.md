@@ -19,3 +19,5 @@ Trois réglages compréhensibles : autoriser les agents ; autoriser l'usage pour
 Le bouton exprime la règle. Le serveur devra l'appliquer avant toute recherche, lecture et sortie. Ce démonstrateur ne protège pas les comptes connectés existants et n'efface pas les informations déjà envoyées.
 
 Lancer : `npm test`, puis `npm run build`. La suite du cadrage se trouve dans [l'architecture](architecture.md) et [le modèle économique](business-model.md).
+
+Pour un usage avec ChatGPT : [guide d'installation](setup-chatgpt.md), [instructions à adapter](../chatgpt/project-instructions.fr.md), [espaces personnels et professionnels](spaces.md) et [choix d'une version](versioning.md). Ce kit est documenté, sans installation automatique dans votre compte et sans contrôleur serveur des outils réels.

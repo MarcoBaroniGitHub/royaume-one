@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "0.1.0",
+  "status": "documentation-template-not-loaded-by-a-runtime",
+  "software": {
+    "repository": "https://github.com/MarcoBaroniGitHub/royaume-one",
+    "commit": "REPLACE_WITH_REVIEWED_FULL_COMMIT_SHA",
+    "automaticUpdates": false
+  },
+  "instructions": {
+    "path": "chatgpt/project-instructions.fr.md",
+    "templateVersion": "0.1.0",
+    "commit": "REPLACE_WITH_COMMIT_CONTAINING_THE_CHOSEN_TEMPLATE"
+  },
+  "activeSpace": {
+    "id": "synthetic-workspace",
+    "type": "organization",
+    "projectIds": ["synthetic-project"]
+  },
+  "sources": [],
+  "plugins": [],
+  "externalOperations": []
+}
